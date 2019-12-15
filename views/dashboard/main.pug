@@ -1,0 +1,19 @@
+extends layout
+
+block section
+    table.table.table-bordered
+        thead
+            tr
+                th #
+                th title
+                th
+        tbody
+            each post,i in posts
+                tr
+                    td #{i+1}
+                    td #{post.title}
+                    td.d-inline-flex
+                        form(method='post', action='/dashboard/post/delete/'+post._id)
+                            input(type='hidden', name='_method', value='DELETE')
+                            button(class='btn btn-sm btn-danger') delete
+                        a(href='/dashboard/post/edit/'+post._id,class='btn btn-sm btn-warning ml-2') edit

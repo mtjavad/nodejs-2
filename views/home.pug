@@ -1,0 +1,9 @@
+extends layout
+block content
+    div(class="container mt-5")
+        div.row
+            div.col-12
+                h2.text-success Title
+                ul.list-group
+                    each name in names
+                        li.list-group-item #{name}

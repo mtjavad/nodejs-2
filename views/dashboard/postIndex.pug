@@ -1,0 +1,21 @@
+extends layout
+
+block section
+    table.table.table-bordered
+        thead
+            tr
+                th #
+                th title
+                th option
+        tbody
+            each post,i in posts
+                tr
+                    td #{i+1}
+                    td #{post.title}
+                    td.list-inline
+                        li.list-inline-item
+                            form(method='POST', action='/dashboard/post/delete/'+post._id+"?_method=DELETE")
+                                button(type="submit", class='btn btn-sm btn-danger') delete
+                        li.list-inline-item
+                            a(href='/dashboard/post/edit/'+post._id+"?_method=PUT",class='btn btn-sm btn-warning ml-2') edit
+    a(href='/dashboard/post/create', class='btn btn-success') Create Post

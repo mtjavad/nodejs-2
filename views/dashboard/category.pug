@@ -1,0 +1,8 @@
+extends layout
+
+block section
+    form(action=category?'/dashboard/category/edit/'+category._id+"?_method=PUT":'/dashboard/category/store', method='post', class='col-md-6')
+        div.form-group
+            label(for='name') name
+            input(type='text',class='form-control', name='name', id='name', value=category?category.name:null)
+        button.btn.btn-sm.btn-primary submit

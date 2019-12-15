@@ -1,0 +1,21 @@
+extends layout
+
+block section
+    table.table.table-bordered
+        thead
+            tr
+                th #
+                th name
+                th option
+        tbody
+            each category,i in categories
+                tr
+                    td #{i+1}
+                    td #{category.name}
+                    td.list-inline
+                        li.list-inline-item
+                            form(method='post', action='/dashboard/category/delete/'+category._id+"?_method=DELETE")
+                                button(type="submit", class='btn btn-sm btn-danger') delete
+                        li.list-inline-item
+                            a(href='/dashboard/category/edit/'+category._id+"?_method=PUT",class='btn btn-sm btn-warning ml-2') edit
+    a(href='/dashboard/category/create', class='btn btn-success') Create Category

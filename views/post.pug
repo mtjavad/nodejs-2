@@ -1,0 +1,28 @@
+extends layout
+block content
+    h2 Post
+    br
+    h3 #{post.title}
+    p #{post.description}
+    hr.mb-5
+    br
+    div.row.mt-5.mb-2
+        div.col-12
+            h3 Comments
+            br
+            each comment in comments
+                h4 #{comment.commentor}
+                p #{comment.body}
+                hr
+
+    div.row.justify-content-center
+        div.col-md-8
+            form(method='POST', action='/comment/store')
+                input(type="hidden",name="post", value=post.id)
+                div.form-group
+                    label commentor
+                    input(class="form-control",type="text",name="commentor")
+                div.form-group
+                    label(for='body') body
+                    textarea(class='form-control', name='body', id='body')
+                button(type="submit", class='btn btn-sm btn-primary') submit

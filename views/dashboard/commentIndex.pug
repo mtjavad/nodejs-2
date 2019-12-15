@@ -1,0 +1,24 @@
+extends layout
+
+block section
+    table.table.table-bordered
+        thead
+            tr
+                th #
+                th body
+                th commentor
+                th option
+        tbody
+            each comment,i in comments
+                tr
+                    td #{i+1}
+                    td #{comment.body}
+                    td #{comment.commentor}
+                    td.list-inline
+                        li.list-inline-item
+                            form(method='post', action='/dashboard/comment/delete/'+comment._id+"?_method=DELETE")
+                                button(type="submit", class='btn btn-sm btn-danger') delete
+                        li.list-inline-item
+                            if (comment.approved == false)
+                                a(href='/dashboard/comment/approve/'+comment._id,class='btn btn-sm btn-info ml-2') approve
+    a(href='/dashboard/comment/create', class='btn btn-success') Create Comment

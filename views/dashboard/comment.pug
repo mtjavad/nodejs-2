@@ -1,0 +1,16 @@
+extends layout
+
+block section
+    form(action=comment? '/dashboard/comment/edit/'+comment._id+"?_method=PUT":'/dashboard/comment/store', method='post', class='col-md-6')
+        div.form-group
+            label commentor
+            input(class="form-control",type="text",name="commentor")
+        div.form-group
+            label(for='body') body
+            textarea(class='form-control', name='body', id='body') #{comment? comment.body:null}
+        div.form-group
+            label(for='posts') posts
+            select(id='posts' class='form-control',name='post')
+                each post in posts
+                    option(value=post.id, selected=comment && comment.post==post.id? true:false) #{post.title}
+        button.btn.btn-sm.btn-primary submit

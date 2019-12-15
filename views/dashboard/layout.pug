@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+    div.row
+        div.col-md-3
+            ul.list-group
+                a(href='/dashboard/post/index' class='text-decoration-none list-group-item') Posts
+                a(href='/dashboard/category/index' class='text-decoration-none list-group-item') Categories
+                a(href='/dashboard/comment/index' class='text-decoration-none list-group-item') Comments
+        div.col-md-9
+            block section

@@ -1,0 +1,16 @@
+extends layout
+
+block section
+    form(action=post?'/dashboard/post/edit/'+post._id+"?_method=PUT":'/dashboard/post/store', method='post', class='col-md-6')
+        div.form-group
+            label(for='title') title
+            input(type='text',class='form-control', name='title', id='title', value=post? post.title:null )
+        div.form-group
+            label(for='description') description
+            textarea(class='form-control', name='description', id='description') #{post? post.description:null}
+        div.form-group
+            label(for='category') category
+            select(id='category' class='form-control',name='category')
+                each category in categories
+                    option(value=category.id, selected=post && post.category==category.id? true:false) #{category.name}
+        button.btn.btn-sm.btn-primary submit
